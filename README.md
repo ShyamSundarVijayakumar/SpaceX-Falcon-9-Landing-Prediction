@@ -1,12 +1,17 @@
-# SpaceX Falcon 9 Landing Prediction Project
+<div align="center">
+  <h1>SpaceX Falcon 9 Landing Prediction</h1>
+</div>
+<div align="Left">
+  <img src="https://img.shields.io/badge/License-MIT-blue" alt="License: MIT">
+</div>
 
-## Course Context
+### Course Context
 This repository contains the capstone project for the **"Applied Data Science Capstone"** course offered by **IBM on Coursera**. It represents the culmination of all concepts learned throughout the specialization, applying the **complete data science lifecycle** to a real-world business problem.
 
-## Project Goal
+### Project Goal
 The primary objective of this project is to build a robust machine learning solution that **predicts whether the first stage of the SpaceX Falcon 9 rocket will successfully land**. This prediction helps inform **strategic bidding decisions** for a competing startup in the commercial space launch industry.
 
-## Skills & Concepts Applied
+### Skills & Concepts Applied
 This project demonstrates the full breadth of the data science pipeline, including:
 
 - **End-to-End Data Pipeline Management**: From API-based data collection to structured wrangling and cleaning.
@@ -14,7 +19,7 @@ This project demonstrates the full breadth of the data science pipeline, includi
 - **Machine Learning Model Development**: Designing, training, and evaluating multiple classifiers to predict landing success.
 - **Business Communication**: Translating data findings into actionable insights for stakeholders in a real-world context.
 
-## Project Phases & Contents
+### Project Phases & Contents
 Each phase is represented by a Jupyter Notebook file:
 
 1. **Data Collection**  
@@ -48,7 +53,7 @@ Each phase is represented by a Jupyter Notebook file:
    - Evaluating model performance using accuracy, confusion matrix, and F1-score
    - Recommending the best-performing model and reporting findings
 
-## Technologies Used
+### Technologies Used
 - **Python**
 - **Jupyter Lab**
 - **Requests** (API data retrieval)
@@ -59,7 +64,7 @@ Each phase is represented by a Jupyter Notebook file:
 - **Scikit-learn** (machine learning)
 - **SQL** (data exploration)
 
-## How to View/Run the Project
+### How to View/Run the Project
 Follow the steps below to clone and run the notebooks locally:
 
 ```bash
@@ -83,7 +88,7 @@ pip install -r requirements.txt
 jupyter lab
 ```
 
-## Author
+### Author
 
 <div style="display: flex; align-items: center; gap: 20px">
   <img src="https://avatars.githubusercontent.com/u/27292813?s=200" 
@@ -95,8 +100,8 @@ jupyter lab
 </div>
 
 
-## License
+### License
 This project is shared for educational purposes and portfolio demonstration. Attribution is appreciated if you reference this work.
 
-## Feedback & Contributions
+### Feedback & Contributions
 Feedback, issues, and suggestions are welcome. Feel free to open an issue or fork the repository to contribute!
