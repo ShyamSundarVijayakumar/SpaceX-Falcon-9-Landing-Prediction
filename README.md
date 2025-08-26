@@ -80,6 +80,7 @@ Each phase is implemented in a Jupyter Notebook inside the [`notebooks/`](notebo
 
 ### 8. Interactive Dashboard Development  
 **Notebook:** `spacex-dash-app.py`  
+- Tasks can be found in `Dashboard_Application_with_Plotly_Dash.pdf` file
 - Build a **Plotly Dash** interactive dashboard  
 - Features: launch site dropdown, payload slider, interactive charts  
 - Includes a callback function to render the success-payload-scatter-chart scatter plot  
