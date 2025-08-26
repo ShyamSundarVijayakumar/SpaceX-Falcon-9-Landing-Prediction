@@ -1,84 +1,111 @@
 <div align="center">
-  <h1>SpaceX Falcon 9 Landing Prediction</h1>
-</div>
-<div align="Left">
+  <h1>🚀 SpaceX Falcon 9 Landing Prediction</h1>
+  <p>
+    Capstone project for the <strong>Applied Data Science Capstone</strong> course by <strong>IBM on Coursera</strong>.<br>
+    A complete end-to-end Data Science project covering data collection, exploration, visualization, prediction, and dashboarding.
+  </p>
   <img src="https://img.shields.io/badge/License-MIT-blue" alt="License: MIT">
 </div>
 
-### Course Context
-This repository contains the capstone project for the **"Applied Data Science Capstone"** course offered by **IBM on Coursera**. It represents the culmination of all concepts learned throughout the specialization, applying the **complete data science lifecycle** to a real-world business problem.
+---
 
-### Project Goal
-The primary objective of this project is to build a robust machine learning solution that **predicts whether the first stage of the SpaceX Falcon 9 rocket will successfully land**. This prediction helps inform **strategic bidding decisions** for a competing startup in the commercial space launch industry.
+## 🎯 Project Goal
+The primary objective of this project is to develop a machine learning solution that **predicts whether the first stage of the SpaceX Falcon 9 rocket will successfully land**.  
+This prediction can help inform **strategic bidding decisions** for a competing startup in the commercial space launch industry.
 
-### Skills & Concepts Applied
-This project demonstrates the full breadth of the data science pipeline, including:
+---
 
-- **End-to-End Data Pipeline Management**: From API-based data collection to structured wrangling and cleaning.
-- **Advanced Visualization Techniques**: Crafting both **static and interactive** visualizations to extract and present insights.
-- **Machine Learning Model Development**: Designing, training, and evaluating multiple classifiers to predict landing success.
-- **Business Communication**: Translating data findings into actionable insights for stakeholders in a real-world context.
+## 📚 Skills & Concepts Applied
+This project demonstrates the full data science lifecycle:
 
-### Project Phases & Contents
-Each phase is represented by a Jupyter Notebook file:
+- **End-to-End Data Pipeline** – API requests, web scraping, wrangling, and cleaning  
+- **Visualization** – Both static and interactive (Matplotlib, Plotly, Folium)  
+- **Machine Learning** – Training and evaluating multiple classifiers (SVM, Decision Trees, Logistic Regression)  
+- **Business Communication** – Translating technical findings into actionable insights  
 
-1. **Data Collection**  
-   📄 `Lab_1_Data_Collection.ipynb`  
-   - Accessing and parsing SpaceX API data (JSON)
-   - Structuring launch data for analysis
+---
 
-2. **Data Wrangling**  
-   📄 `Lab_2_Data_Wrangling.ipynb`  
-   - Handling missing data, feature extraction, and transformation
-   - Ensuring data readiness for downstream tasks
+## 📂 Project Phases & Contents
+Each phase is implemented in a Jupyter Notebook inside the [`notebooks/`](notebooks/) directory.
 
-3. **Exploratory Data Analysis (EDA) - Part 1: SQL**  
-   📄 `Lab_3_EDA_SQL.ipynb`  
-   - Using SQL queries to uncover initial insights
+### 1. Web Scraping & Data Collection  
+**Notebook:** `webscraping.ipynb`  
+- Extract Falcon 9 launch records from a Wikipedia HTML table using **BeautifulSoup**  
+- Convert the table into a **Pandas DataFrame**
 
-4. **Exploratory Data Analysis (EDA) - Part 2: Visualization**  
-   📄 `Lab_4_EDA_Visualization.ipynb`  
-   - Visualizing trends and relationships using Matplotlib, Seaborn, and Plotly
+---
 
-5. **Interactive Dashboard Development**  
-   📄 `Lab_5_Interactive_Dashboard.ipynb`  
-   - Building a **Dash web application** for interactive data exploration
+### 2. API Data Collection & Initial Wrangling  
+**Notebook:** `data_collection_api.ipynb`  
+- Retrieve launch data from the **SpaceX API**  
+- Clean and format for further analysis
 
-6. **Machine Learning Model Development**  
-   📄 `Lab_6_Model_Development.ipynb`  
-   - Training and tuning Logistic Regression, SVM, Decision Tree, and KNN models
+---
 
-7. **Model Evaluation & Reporting**  
-   📄 `Lab_7_Model_Evaluation_and_Reporting.ipynb`  
-   - Evaluating model performance using accuracy, confusion matrix, and F1-score
-   - Recommending the best-performing model and reporting findings
+### 3. Exploratory Data Analysis (EDA) with SQL  
+**Notebook:** `eda_sql_sqllite.ipynb`  
+- Load dataset into a **Db2 database**  
+- Perform EDA with **SQL queries**
 
-### Technologies Used
-- **Python**
-- **Jupyter Lab**
-- **Requests** (API data retrieval)
-- **Pandas**, **NumPy** (data manipulation)
-- **BeautifulSoup** (HTML parsing)
-- **Matplotlib**, **Seaborn**, **Plotly** (data visualization)
-- **Dash** (interactive dashboard)
-- **Scikit-learn** (machine learning)
-- **SQL** (data exploration)
+---
 
-### How to View/Run the Project
-Follow the steps below to clone and run the notebooks locally:
+### 4. EDA & Visualization  
+**Notebook:** `eda_DataVisualization.ipynb`  
+- Analyze data with **Pandas** and **Matplotlib**  
+- Perform **feature engineering** for ML models
+
+---
+
+### 5. Interactive Visual Analytics with Folium  
+**Notebook:** `launch_site_location.ipynb`  
+- Map launch sites on **Folium**  
+- Visualize success/failure rates per site  
+- Compute distances between sites and nearby cities  
+
+---
+
+### 6. Machine Learning Prediction  
+**Notebook:** `spaceX_ML_prediction.ipynb`  
+- Build a **machine learning pipeline** for landing prediction  
+- Train & evaluate models: **SVM, Decision Trees, Logistic Regression**  
+- Tune hyperparameters and identify best-performing model  
+
+---
+
+### 7. Interactive Dashboard Development  
+**Notebook:** `data_wrangling.ipynb`  
+- Build a **Plotly Dash** interactive dashboard  
+- Features: launch site dropdown, payload slider, interactive charts  
+- Includes additional EDA & data wrangling tasks  
+
+---
+
+## 🛠️ Technologies Used
+- **Python** – Core language  
+- **Jupyter Lab** – Interactive development environment  
+- **Requests, BeautifulSoup** – Data collection via APIs & scraping  
+- **Pandas, NumPy** – Data wrangling & numerical analysis  
+- **SQL (Db2)** – Database querying for EDA  
+- **Matplotlib, Plotly, Folium** – Visualization (static & interactive)  
+- **Dash** – Interactive dashboards  
+- **Scikit-learn** – ML model development & evaluation  
+
+---
+
+## 💻 How to Run Locally
 
 ```bash
 # 1. Clone the Repository
-git clone https://github.com/YourGitHubUsername/SpaceX-Falcon9-Landing-Prediction.git
+git clone https://github.com/ShyamSundarVijayakumar/SpaceX-Falcon9-Landing-Prediction.git
 cd SpaceX-Falcon9-Landing-Prediction
 
-# 2. Set up Virtual Environment (Recommended)
+# 2. Create Virtual Environment (recommended)
 python -m venv venv
 
-# Activate Virtual Environment
-# On Windows:
+# Activate Environment
+# Windows:
 .\venv\Scripts\activate
-# On macOS/Linux:
+# macOS/Linux:
 source venv/bin/activate
 
 # 3. Install Dependencies
@@ -88,20 +115,12 @@ pip install -r requirements.txt
 jupyter lab
 ```
 
-### Author
+## 👨‍💻 Author
+<div style="display: flex; align-items: center; gap: 20px"> <img src="https://avatars.githubusercontent.com/u/27292813?s=200" width="100" style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2)"> <div> <strong>Shyam Sundar Vijayakumar</strong><br> Data Scientist | Programmer | AI Enthusiast </div> </div>
 
-<div style="display: flex; align-items: center; gap: 20px">
-  <img src="https://avatars.githubusercontent.com/u/27292813?s=200" 
-       width="100" 
-       style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2)">
-  <div>
-    <p1>Hi there, I'm Shyam Sundar Vijayakumar</p1>
-  </div>
-</div>
+---
 
+## 📜 License
+This project is licensed under the MIT License.
+Shared for educational and portfolio purposes. Attribution is appreciated.
 
-### License
-This project is shared for educational purposes and portfolio demonstration. Attribution is appreciated if you reference this work.
-
-### Feedback & Contributions
-Feedback, issues, and suggestions are welcome. Feel free to open an issue or fork the repository to contribute!
