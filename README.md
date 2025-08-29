@@ -37,7 +37,11 @@ Each phase is implemented in a Jupyter Notebook inside the [`notebooks/`](notebo
 
 ### 2. API Data Collection & Initial Wrangling  
 **Notebook:** `data_collection_api.ipynb`  
-- Retrieve launch data from the **SpaceX API**  
+- Retrieve launch data from the **SpaceX API**
+  - Base: /launches/past
+  - Lookups: /rockets, /payloads, /launchpads, /cores (to resolve IDs)
+- requests.get(...).json() → pandas.json_normalize() for launch records.
+- Resolved IDs via rockets/payloads/launchpads/cores endpoints.
 - Clean and format for further analysis
 
 ---
