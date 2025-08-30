@@ -37,26 +37,36 @@ Each phase is implemented in a Jupyter Notebook inside the [`notebooks/`](notebo
 
 ### 2. API Data Collection & Initial Wrangling  
 **Notebook:** `data_collection_api.ipynb`  
-- Retrieve launch data from the **SpaceX API**  
+- Retrieve launch data from the **SpaceX API**
+  - Base: /launches/past
+  - Lookups: /rockets, /payloads, /launchpads, /cores (to resolve IDs)
+- requests.get(...).json() → pandas.json_normalize() for launch records.
+- Resolved IDs via rockets/payloads/launchpads/cores endpoints.
 - Clean and format for further analysis
 
 ---
 
-### 3. Exploratory Data Analysis (EDA) with SQL  
+### 3. Data Wrangling  
+**Notebook:** `data_wrangling.ipynb`  
+- Perform exploratory Data Analysis 
+- Determine Training Labels
+
+---
+### 4. Exploratory Data Analysis (EDA) with SQL  
 **Notebook:** `eda_sql_sqllite.ipynb`  
 - Load dataset into a **Db2 database**  
 - Perform EDA with **SQL queries**
 
 ---
 
-### 4. EDA & Visualization  
+### 5. EDA & Visualization  
 **Notebook:** `eda_DataVisualization.ipynb`  
 - Analyze data with **Pandas** and **Matplotlib**  
 - Perform **feature engineering** for ML models
 
 ---
 
-### 5. Interactive Visual Analytics with Folium  
+### 6. Interactive Visual Analytics with Folium  
 **Notebook:** `launch_site_location.ipynb`  
 - Map launch sites on **Folium**  
 - Visualize success/failure rates per site  
@@ -64,7 +74,7 @@ Each phase is implemented in a Jupyter Notebook inside the [`notebooks/`](notebo
 
 ---
 
-### 6. Machine Learning Prediction  
+### 7. Machine Learning Prediction  
 **Notebook:** `spaceX_ML_prediction.ipynb`  
 - Build a **machine learning pipeline** for landing prediction  
 - Train & evaluate models: **SVM, Decision Trees, Logistic Regression**  
@@ -72,11 +82,12 @@ Each phase is implemented in a Jupyter Notebook inside the [`notebooks/`](notebo
 
 ---
 
-### 7. Interactive Dashboard Development  
-**Notebook:** `data_wrangling.ipynb`  
+### 8. Interactive Dashboard Development  
+**Notebook:** `spacex-dash-app.py`  
+- Tasks can be found in `Dashboard_Application_with_Plotly_Dash.pdf` file
 - Build a **Plotly Dash** interactive dashboard  
 - Features: launch site dropdown, payload slider, interactive charts  
-- Includes additional EDA & data wrangling tasks  
+- Includes a callback function to render the success-payload-scatter-chart scatter plot  
 
 ---
 
