@@ -38,10 +38,10 @@ Each phase is implemented in a Jupyter Notebook inside the [`notebooks/`](notebo
 ### 2. API Data Collection & Initial Wrangling  
 **Notebook:** `data_collection_api.ipynb`  
 - Retrieve launch data from the **SpaceX API**
-  - Base: /launches/past
-  - Lookups: /rockets, /payloads, /launchpads, /cores (to resolve IDs)
-- requests.get(...).json() → pandas.json_normalize() for launch records.
-- Resolved IDs via rockets/payloads/launchpads/cores endpoints.
+  - Base: `/launches/past`
+  - Lookups: `/rockets, /payloads, /launchpads, /cores` (to resolve IDs)
+- `requests.get(...).json()` → `pandas.json_normalize()` for launch records.
+- Resolved IDs via `rockets/payloads/launchpads/cores` endpoints.
 - Clean and format for further analysis
 
 ---
@@ -56,6 +56,11 @@ Each phase is implemented in a Jupyter Notebook inside the [`notebooks/`](notebo
 **Notebook:** `eda_sql_sqllite.ipynb`  
 - Load dataset into a **Db2 database**  
 - Perform EDA with **SQL queries**
+- SQL (SQLite) examples:
+  - Unique launch sites; **CCAFS SLC-40** launches = 13.
+  - Success rate example: ~67% (by site query).
+  - Geosynchronous orbit (GTO) count = 27.
+  - Mission outcome “True ASDS” (successful drone ship landings) = 41.
 
 ---
 
@@ -63,31 +68,63 @@ Each phase is implemented in a Jupyter Notebook inside the [`notebooks/`](notebo
 **Notebook:** `eda_DataVisualization.ipynb`  
 - Analyze data with **Pandas** and **Matplotlib**  
 - Perform **feature engineering** for ML models
-
+Visual EDA: site distributions, orbit distribution, payload vs success, yearly trend.
 ---
 
 ### 6. Interactive Visual Analytics with Folium  
 **Notebook:** `launch_site_location.ipynb`  
-- Map launch sites on **Folium**  
-- Visualize success/failure rates per site  
+- Map launch sites on **Folium**
+- Visualize success/failure (colored markers with MarkerCluster) rates per site  
 - Compute distances between sites and nearby cities  
+  distances from **VAFB SLC-4E** to:
+  - Nearby city (Los Angeles): ~232.44 km
+  - Nearby railway line: ~1.29 km
 
 ---
 
 ### 7. Machine Learning Prediction  
 **Notebook:** `spaceX_ML_prediction.ipynb`  
-- Build a **machine learning pipeline** for landing prediction  
-- Train & evaluate models: **SVM, Decision Trees, Logistic Regression**  
+- Build a **machine learning pipeline** for landing prediction
+- Feature set included: `FlightNumber, PayloadMass, Orbit, LaunchSite, Flights, GridFins, Reused, Legs, LandingPad, Block, ReusedCount, Serial`
+- Train & evaluate models: **SVM, Decision Trees, Logistic Regression**
 - Tune hyperparameters and identify best-performing model  
+  - GridSearchCV (cv=10) across:
+    - Logistic Regression (`C`, `solver`, `penalty=l2`)
+    - SVM (`kernel`, `C`, `gamma`) → best kernel: **sigmoid**
+    - Decision Tree (`criterion`, `splitter`, `max_depth`, `max_features`, `min_samples_*`)
+    - KNN (`n_neighbors`, `p`, `algorithm`)
 
 ---
-
-### 8. Interactive Dashboard Development  
+### 9. Interactive Dashboard Development  
 **Notebook:** `spacex-dash-app.py`  
 - Tasks can be found in `Dashboard_Application_with_Plotly_Dash.pdf` file
 - Build a **Plotly Dash** interactive dashboard  
 - Features: launch site dropdown, payload slider, interactive charts  
 - Includes a callback function to render the success-payload-scatter-chart scatter plot  
+
+---
+
+### 8. Key Findings
+
+  - **By Site**: Success ratios differ (e.g., KSC LC-39A and VAFB SLC-4E higher; CCAFS LC-40 lower).
+  - **By Orbit**: Counts observed (example) — **GTO=27, ISS=21, VLEO=14, PO=9, LEO=7, SSO=5, MEO=3, HEO=1, ES-L1=1, SO=1, GEO=1**.
+  - **Mission Outcomes (sample counts)**:
+    - **True ASDS=41, True RTLS=14, False ASDS=6, True Ocean=5, False Ocean=2, None ASDS=2, False RTLS=1, None None=19**.
+  - **Trend**: Success improved notably after ~2017.
+  - **Dash insights**: Payload bands and site filters reveal clear patterns in success likelihood.
+
+---
+### 10. Machine Learning Results
+  - Logistic Regression:
+    - CV ≈ 0.8464, Test ≈ 0.8333
+  - Support Vector Machine (SVM):
+    - Best kernel: sigmoid, CV ≈ 0.8482
+  - **Decision Tree (BEST)**:
+    - **CV ≈ 0.875, Test ≈ 0.8889**
+  - K-Nearest Neighbors (KNN):
+    - k = 10, p = 1, CV ≈ 0.8482
+
+Confusion matrices (e.g., Logistic Regression) show some false positives (predict “land” when it didn’t), which should be considered in operational use.
 
 ---
 
