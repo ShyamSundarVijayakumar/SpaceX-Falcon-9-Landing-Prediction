@@ -10,8 +10,7 @@
 ---
 
 ## 🎯 Project Goal
-The primary objective of this project is to develop a machine learning solution that **predicts whether the first stage of the SpaceX Falcon 9 rocket will successfully land**.  
-This prediction can help inform **strategic bidding decisions** for a competing startup in the commercial space launch industry.
+The primary objective of this project is to develop a machine learning solution that **predicts whether the first stage of the SpaceX Falcon 9 rocket will successfully land**. This prediction can help inform **strategic bidding decisions** for a competing startup in the commercial space launch industry.
 
 ---
 
@@ -48,19 +47,16 @@ Each phase is implemented in a Jupyter Notebook inside the [`notebooks/`](notebo
 
 ### 3. Data Wrangling  
 **Notebook:** `data_wrangling.ipynb`  
-- Perform exploratory Data Analysis 
-- Determine Training Labels
+- Filtered to Falcon 9 launches; kept single core and single payload rows.
+- Converted `date_utc → date`; restricted to `dates ≤ 2020-11-13`.
+- **Imputation**: `PayloadMass = mean` for missing values ; `LandingPad = None` retained for one-hot encoding later.
+- Created clean tabular datasets.
 
 ---
 ### 4. Exploratory Data Analysis (EDA) with SQL  
 **Notebook:** `eda_sql_sqllite.ipynb`  
 - Load dataset into a **Db2 database**  
 - Perform EDA with **SQL queries**
-- SQL (SQLite) examples:
-  - Unique launch sites; **CCAFS SLC-40** launches = 13.
-  - Success rate example: ~67% (by site query).
-  - Geosynchronous orbit (GTO) count = 27.
-  - Mission outcome “True ASDS” (successful drone ship landings) = 41.
 
 ---
 
@@ -85,7 +81,7 @@ Visual EDA: site distributions, orbit distribution, payload vs success, yearly t
 ### 7. Machine Learning Prediction  
 **Notebook:** `spaceX_ML_prediction.ipynb`  
 - Build a **machine learning pipeline** for landing prediction
-- Feature set included: `FlightNumber, PayloadMass, Orbit, LaunchSite, Flights, GridFins, Reused, Legs, LandingPad, Block, ReusedCount, Serial`
+- Featureset : `FlightNumber, PayloadMass, Orbit, LaunchSite, Flights, GridFins, Reused, Legs, LandingPad, Block, ReusedCount, Serial`
 - Train & evaluate models: **SVM, Decision Trees, Logistic Regression**
 - Tune hyperparameters and identify best-performing model  
   - GridSearchCV (cv=10) across:
@@ -95,39 +91,37 @@ Visual EDA: site distributions, orbit distribution, payload vs success, yearly t
     - KNN (`n_neighbors`, `p`, `algorithm`)
 
 ---
-### 9. Interactive Dashboard Development  
+### 8. Interactive Dashboard Development  
 **Notebook:** `spacex-dash-app.py`  
 - Tasks can be found in `Dashboard_Application_with_Plotly_Dash.pdf` file
 - Build a **Plotly Dash** interactive dashboard  
-- Features: launch site dropdown, payload slider, interactive charts  
+- **Features: launch site dropdown, payload slider, interactive charts**  
 - Includes a callback function to render the success-payload-scatter-chart scatter plot  
 
 ---
 
-### 8. Key Findings
+### 9. Machine Learning Results
 
-  - **By Site**: Success ratios differ (e.g., KSC LC-39A and VAFB SLC-4E higher; CCAFS LC-40 lower).
-  - **By Orbit**: Counts observed (example) — **GTO=27, ISS=21, VLEO=14, PO=9, LEO=7, SSO=5, MEO=3, HEO=1, ES-L1=1, SO=1, GEO=1**.
-  - **Mission Outcomes (sample counts)**:
-    - **True ASDS=41, True RTLS=14, False ASDS=6, True Ocean=5, False Ocean=2, None ASDS=2, False RTLS=1, None None=19**.
-  - **Trend**: Success improved notably after ~2017.
-  - **Dash insights**: Payload bands and site filters reveal clear patterns in success likelihood.
+| Model | Training Accuracy | Test Accuracy |
+| :--- | :---: | :---: |
+| KNN | 0.8482 | 0.8333 |
+| **Decision Tree** | **0.8750** | **0.8333** |
+| SVM | 0.8482 | 0.8333 |
+| Logistic Regression | 0.8464 | 0.8333 |
 
----
-### 10. Machine Learning Results
-  - Logistic Regression:
-    - CV ≈ 0.8464, Test ≈ 0.8333
-  - Support Vector Machine (SVM):
-    - Best kernel: sigmoid, CV ≈ 0.8482
-  - **Decision Tree (BEST)**:
-    - **CV ≈ 0.875, Test ≈ 0.8889**
-  - K-Nearest Neighbors (KNN):
-    - k = 10, p = 1, CV ≈ 0.8482
 
 Confusion matrices (e.g., Logistic Regression) show some false positives (predict “land” when it didn’t), which should be considered in operational use.
 
 ---
 
+### 10. Key Findings
+
+  - **By Site**: Success ratios differ (e.g., KSC LC-39A and VAFB SLC-4E higher; CCAFS LC-40 lower).
+  - **By Orbit**: Counts observed (example) — **GTO=27, ISS=21, VLEO=14, PO=9, LEO=7, SSO=5, MEO=3, HEO=1, ES-L1=1, SO=1, GEO=1**.
+  - **Trend**: Success improved notably after ~2017.
+  - **Dash insights**: Payload bands and site filters reveal clear patterns in success likelihood.
+
+---
 ## 🛠️ Technologies Used
 - **Python** – Core language  
 - **Jupyter Lab** – Interactive development environment  
