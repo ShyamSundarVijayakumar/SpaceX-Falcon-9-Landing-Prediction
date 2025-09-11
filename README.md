@@ -9,12 +9,19 @@
 
 ---
 
-## 🎯 Project Goal
+## 🎯 Problem Statement
 The primary objective of this project is to develop a machine learning solution that **predicts whether the first stage of the SpaceX Falcon 9 rocket will successfully land**. This prediction can help inform **strategic bidding decisions** for a competing startup in the commercial space launch industry.
 
 ---
 
-## 📚 Skills & Concepts Applied
+## 🌐 Data Sources
+
+  * Web scraped data from the [Wikipedia page titled 'List of Falcon 9 and Falcon Heavy launches'](https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches).
+  * Public data from the [SpaceX API](https://api.spacexdata.com/v4/launches/past).
+
+---
+
+## 📚 Approach
 This project demonstrates the full data science lifecycle:
 
 - **End-to-End Data Pipeline** – API requests, web scraping, wrangling, and cleaning  
@@ -24,7 +31,7 @@ This project demonstrates the full data science lifecycle:
 
 ---
 
-## 📂 Project Phases & Contents
+## ⚙️Technical Methodology
 Each phase is implemented in a Jupyter Notebook inside the [`notebooks/`](notebooks/) directory.
 
 ### 1. Web Scraping & Data Collection  
@@ -114,7 +121,7 @@ Confusion matrices (e.g., Logistic Regression) show some false positives (predic
 
 ---
 
-### 10. Key Findings
+## 📈 Results
 
   - **By Site**: Success ratios differ (e.g., KSC LC-39A and VAFB SLC-4E higher; CCAFS LC-40 lower).
   - **By Orbit**: Counts observed (example) — **GTO=27, ISS=21, VLEO=14, PO=9, LEO=7, SSO=5, MEO=3, HEO=1, ES-L1=1, SO=1, GEO=1**.
